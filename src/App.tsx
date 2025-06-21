@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import cls from './App.module.css'
 import axios from 'axios'
 import { Outlet, useNavigate } from 'react-router-dom'
@@ -30,21 +29,21 @@ function App() {
   }, [])
 
   const addFilm = (info: Omit<IFilm, 'id'>) => {
-    axios.post('https://server-test-daploy.onrender.com/movies', info).then(res => {
+    axios.post('https://server-test-daploy.onrender.com/movies', info).then(() => {
       fetchFilms()
     }).catch(err=>{console.log(err)}
     )
   }
 
   const deleteFilm = (id:number) => {
-    axios.delete(`https://server-test-daploy.onrender.com/movies/${id}`).then((res)=>{
+    axios.delete(`https://server-test-daploy.onrender.com/movies/${id}`).then(()=>{
       fetchFilms()
     }).catch(err=>{console.log(err)}
     )
   }
 
   const editFilm = (info: Omit<IFilm, 'id'>, id: number) => {
-    axios.put(`https://server-test-daploy.onrender.com/movies/${id}`, info).then((res)=>{
+    axios.put(`https://server-test-daploy.onrender.com/movies/${id}`, info).then(()=>{
       fetchFilms()
     }).catch(err=>{console.log(err)}
     )
